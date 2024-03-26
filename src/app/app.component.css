@@ -1,0 +1,20 @@
+nav {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #abb1c9;
+  color: #fff;
+  display: flex;
+  padding: 0 16px;
+  align-items: center;
+  height: 56px;
+  font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
+}
+
+a {
+  padding: 0 16px;
+}
+
+h1 {
+  font: 500 32px/40px Roboto, "Helvetica Neue", sans-serif;
+}

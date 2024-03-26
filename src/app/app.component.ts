@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {todos} from "./mock/ToDoList";
 
 @Component({
   selector: 'app-root',
@@ -8,5 +7,5 @@ import {todos} from "./mock/ToDoList";
 })
 export class AppComponent {
   title = 'angular-training-todo';
-  todos = todos;
+
 }
