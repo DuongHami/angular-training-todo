@@ -1,7 +1,8 @@
-import {Component, Input} from '@angular/core';
+import {Component, Inject, Input} from '@angular/core';
 import { ToDo } from "../../entity/ToDo";
 import { EditentityService } from "../../service/editentity.service";
-import {TodoComponent} from "../todo/todo.component";
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {TodoService} from "../../service/todo.service";
 
 @Component({
   selector: 'app-edittodopopup',
@@ -10,25 +11,12 @@ import {TodoComponent} from "../todo/todo.component";
 })
 export class EdittodopopupComponent {
 
-  @Input() editTodo!: ToDo;
+  constructor(@Inject(MAT_DIALOG_DATA) public todo: ToDo, private editService : EditentityService, private todoService : TodoService) {}
 
-  constructor() {
-
+  closePopUp(){
+    this.editService.closePopup();
+    this.todoService.updateToDo(this.todo)
   }
 
-
-  // constructor(private todoEditService : EditentityService) {
-  //   this.todoEditService.todosubject.subscribe(todo => {
-  //     this.editTodo = todo
-  //   });
-  // }
-
-  // closePopup() {
-  //
-  // }
-  //
-  // saveChanges(){
-  //
-  // }
 
 }

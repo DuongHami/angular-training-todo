@@ -15,6 +15,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { ImprintComponent } from './components/imprint/imprint.component';
 import { DataprotectionComponent } from './components/dataprotection/dataprotection.component';
 import { EdittodopopupComponent } from './components/edittodopopup/edittodopopup.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 
@@ -36,7 +37,8 @@ import { EdittodopopupComponent } from './components/edittodopopup/edittodopopup
     FormsModule,
     MatCardModule,
     MatButtonModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

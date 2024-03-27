@@ -7,7 +7,7 @@ import { ToDo } from "../entity/ToDo";
 })
 export class TodoService {
 
-  private toDo : ToDo[] = todos;
+  private todos : ToDo[] = todos;
 
   constructor() { }
 
@@ -20,9 +20,27 @@ export class TodoService {
     // return todo;
   }
 
+  public updateToDo(todo:ToDo){
+    todos[todo.id] = todo;
+  }
+
+  public deleteToDo(todo:ToDo){
+    this.todos.splice(this.todos.indexOf(todo), 1);
+  }
+
+  public deleteToDoById(id:number){
+    this.todos.splice(id, 1);
+  }
+
   public getToDoById(id:number): ToDo | undefined{
     return todos.find(item => item.id == id);
   }
 
-  // public getT
+  public getAllFinishedTodo(){
+    return todos.filter(todo => todo.completed == true)
+  }
+
+  public getAllOpenTodo(){
+    return todos.filter(todo => todo.completed == false)
+  }
 }

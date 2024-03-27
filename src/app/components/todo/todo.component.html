@@ -6,16 +6,18 @@
 <mat-card>
   <mat-card-header>
     <mat-card-title>
-      Todo name here
+      <h4>{{todo.taskname}}</h4>
+<!--      <input type = "text" [(ngModel)]="todo.taskname">-->
     </mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <input type = "text" [(ngModel)]="todo.taskname">
+<!--    <input type = "text" [(ngModel)]="todo.description">-->
+    <p>{{todo.description}}</p>
 <!--    <input type = "checkbox" [(ngModel)]="todo.completed">-->
-    <button>
+    <button (click)="openPopUp(todo)">
       Edit
     </button>
-    <button>
+    <button (click)="deleteTodo(todo)">
       Delete
     </button>
   </mat-card-content>

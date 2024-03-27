@@ -1,1 +1,18 @@
-<p>edittodopopup works!</p>
+<h1 mat-dialog-title>Edit Menu</h1>
+<div mat-dialog-content>
+  <div>
+    <p>Taskname:</p>
+    <input type = "text" [(ngModel)]="todo.taskname">
+  </div>
+  <div>
+    <p>Description:</p>
+    <input type = "text" [(ngModel)]="todo.description">
+  </div>
+  <div>
+    <p>Completed?:</p>
+    <input type = "checkbox" [(ngModel)]="todo.completed">
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="closePopUp()">Close</button>
+</div>
