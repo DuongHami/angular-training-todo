@@ -1,31 +1,33 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ToDo} from "../../entity/ToDo";
-import {todos} from "../../mock/ToDoList";
+// import {todos} from "../../mock/ToDoList";
+import { TodoService } from "../../service/todo.service";
 
 @Component({
   selector: 'app-todos',
   templateUrl: './todos.component.html',
-  styleUrl: './todos.component.css'
+  styleUrl: './todos.component.css',
+  providers : [TodoService]
 })
 export class TodosComponent implements OnInit{
 
-  @Input() todos : ToDo[] = todos;
+  public  toDoService : TodoService;
 
-  todosDone : ToDo[] = [];
-  todosOpen : ToDo[] = [];
+  // todosDone : ToDo[] = [];
+  // todosOpen : ToDo[] = [];
 
-  constructor() {
-
+  constructor(toDoService : TodoService) {
+    this.toDoService = toDoService
   }
 
   ngOnInit() {
-    this.sortTodos();
+    // this.sortTodos();
   }
 
-  sortTodos(){
-    this.todosDone = this.todos.filter(todo => todo.completed == true);
-    this.todosOpen = this.todos.filter(todo => todo.completed == false);
-  }
+  // sortTodos(){
+  //   this.todosDone = this.todos.filter(todo => todo.completed == true);
+  //   this.todosOpen = this.todos.filter(todo => todo.completed == false);
+  // }
 
 
 }

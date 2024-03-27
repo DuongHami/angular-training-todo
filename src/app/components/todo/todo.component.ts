@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ToDo} from "../../entity/ToDo";
+import { EditentityService } from "../../service/editentity.service";
 
 @Component({
   selector: 'app-todo',
@@ -11,7 +12,7 @@ export class TodoComponent implements OnInit{
 
   @Input() todo!: ToDo;
 
-  constructor() {
+  constructor(private todoEditService : EditentityService) {
 
   }
 
@@ -20,7 +21,7 @@ export class TodoComponent implements OnInit{
   }
 
   editEntity() {
-
+    this.todoEditService.editTodo(this.todo);
   }
 
 }
