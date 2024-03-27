@@ -19,4 +19,8 @@ export class TodoComponent implements OnInit{
 
   }
 
+  editEntity() {
+
+  }
+
 }

@@ -11,11 +11,20 @@ export class TodosComponent implements OnInit{
 
   @Input() todos : ToDo[] = todos;
 
+  todosDone : ToDo[] = [];
+  todosOpen : ToDo[] = [];
+
   constructor() {
 
   }
 
   ngOnInit() {
+    this.sortTodos();
+  }
+
+  sortTodos(){
+    this.todosDone = this.todos.filter(todo => todo.completed == true);
+    this.todosOpen = this.todos.filter(todo => todo.completed == false);
   }
 
 

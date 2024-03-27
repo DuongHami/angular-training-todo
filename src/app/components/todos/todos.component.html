@@ -1,1 +1,10 @@
-<app-todo *ngFor="let todo of todos" [todo]="todo"></app-todo>
+<!--<app-todo *ngFor="let todo of todos" [todo]="todo"></app-todo>-->
+<div>
+  <h2>Open</h2>
+    <app-todo *ngFor="let todo of todosOpen" [todo]="todo"></app-todo>
+</div>
+
+<div>
+  <h2>Done</h2>
+    <app-todo *ngFor="let todo of todosDone" [todo]="todo"></app-todo>
+</div>

@@ -10,6 +10,11 @@ import { LoginComponent } from './components/login/login.component';
 import { TodosComponent } from './components/todos/todos.component';
 import { MatCardModule } from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
+import { ModetoggleComponent } from './components/modetoggle/modetoggle.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { ImprintComponent } from './components/imprint/imprint.component';
+import { DataprotectionComponent } from './components/dataprotection/dataprotection.component';
+import { EdittodopopupComponent } from './components/edittodopopup/edittodopopup.component';
 
 
 
@@ -19,14 +24,19 @@ import {MatButtonModule} from '@angular/material/button';
     TodoComponent,
     HomeComponent,
     LoginComponent,
-    TodosComponent
+    TodosComponent,
+    ModetoggleComponent,
+    ImprintComponent,
+    DataprotectionComponent,
+    EdittodopopupComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
