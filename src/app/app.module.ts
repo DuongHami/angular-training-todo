@@ -24,6 +24,7 @@ import {
   CdkDropList,
 } from '@angular/cdk/drag-drop';
 import {HttpClientModule} from "@angular/common/http";
+import { CreatetodopopupComponent } from './components/createtodopopup/createtodopopup.component';
 
 
 
@@ -38,6 +39,7 @@ import {HttpClientModule} from "@angular/common/http";
     ImprintComponent,
     DataprotectionComponent,
     EdittodopopupComponent,
+    CreatetodopopupComponent,
   ],
   imports: [
     BrowserModule,

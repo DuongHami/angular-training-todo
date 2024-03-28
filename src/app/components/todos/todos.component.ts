@@ -1,9 +1,8 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Injectable, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {ToDo} from "../../entity/ToDo";
-// import {todos} from "../../mock/ToDoList";
 import { TodoService } from "../../service/todo.service";
-import {TodoapiService} from "../../service/todoapi.service";
-import {__createBinding} from "tslib";
+import {EditentityService} from "../../service/editentity.service";
+import {CreateService} from "../../service/create.service";
 
 @Component({
   selector: 'app-todos',
@@ -14,38 +13,24 @@ import {__createBinding} from "tslib";
 export class TodosComponent implements OnInit {
 
   public  toDoService : TodoService;
-  public todoApiService : TodoapiService;
   public todos : ToDo[] = [];
 
   public todosDone : ToDo[] = [];
   public todosOpen : ToDo[] = [];
 
-  constructor(toDoService : TodoService, todoApiService : TodoapiService){
+  constructor(toDoService : TodoService, private createService : CreateService){
     this.toDoService = toDoService;
-    this.todoApiService = todoApiService;
   }
 
   ngOnInit() {
-    // this.sortTodos();
-    // this.todos = this.toDoService.getAllToDos();
-    // this.toDoService.getAllToDos().subscribe(response =>
-    //   this.todos = response
-    // )
-    // this.getAllTodos()
     this.getAllOpenTodos()
     this.getAllFinishedTodos()
   }
-  // ngOnChanges(changes: SimpleChanges): void {
-  //   this.getAllOpenTodos()
-  //   this.getAllFinishedTodos()
-  // }
 
-
-  // getAllTodos() {
-  //   this.toDoService.getAllToDos().subscribe(response =>
-  //     this.todos = response
-  //   )
-  // }
+  updateTodos(){
+    this.getAllOpenTodos()
+    this.getAllFinishedTodos()
+  }
 
   getAllOpenTodos(){
     this.toDoService.getAllOpenTodo().subscribe(response =>
@@ -64,5 +49,9 @@ export class TodosComponent implements OnInit {
         this.getAllOpenTodos()
         this.getAllFinishedTodos()
     })
+  }
+
+  createNew(){
+    this.createService.openPopup();
   }
 }

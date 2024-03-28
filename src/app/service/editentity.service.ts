@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import { BehaviorSubject} from "rxjs";
 import { ToDo } from "../entity/ToDo";
 import { EdittodopopupComponent } from "../components/edittodopopup/edittodopopup.component";
 import {MatDialog} from "@angular/material/dialog";
+import {TodosComponent} from "../components/todos/todos.component";
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +13,11 @@ export class EditentityService {
   constructor(private dialog : MatDialog) { }
 
   openPopup(todo : ToDo){
-    if(this.dialog.openDialogs.length==0)
+    if(this.dialog.openDialogs.length==0){
       this.dialog.open(EdittodopopupComponent, {
         data:todo
       })
+    }
   }
 
   closePopup(){

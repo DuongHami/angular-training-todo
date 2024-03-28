@@ -25,6 +25,10 @@ export class TodoService {
     return this.todoApiService.createTodo(new ToDo(0, "NewTask", "NewTask", false));
   }
 
+  public createToDoNew(todo : ToDo):Observable<ToDo>{
+    return this.todoApiService.createTodo(todo)
+  }
+
   public updateToDo(todo:ToDo):Observable<ToDo>{
     return this.todoApiService.updateTodo(todo)
     // const index = this.todos.findIndex(item => item.id === todo.id);

@@ -1,7 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, EventEmitter, Output, Inject} from '@angular/core';
 import {ToDo} from "../../entity/ToDo";
 import { EditentityService } from "../../service/editentity.service";
 import { TodoService } from "../../service/todo.service";
+import {TodosComponent} from "../todos/todos.component";
 
 @Component({
   selector: 'app-todo',
@@ -12,8 +13,9 @@ import { TodoService } from "../../service/todo.service";
 export class TodoComponent implements OnInit{
 
   @Input() todo!: ToDo;
+  @Output() updateEvent = new EventEmitter<number>();
 
-  constructor(private todoEditService : EditentityService, private todoService : TodoService) {
+  constructor(private todoEditService : EditentityService, private todoService : TodoService, @Inject(TodosComponent) private parent : TodosComponent) {
 
   }
 
@@ -26,7 +28,10 @@ export class TodoComponent implements OnInit{
   }
 
   deleteTodo(todo: ToDo){
-    this.todoService.deleteToDoById(todo.id).subscribe()
+    this.todoService.deleteToDoById(todo.id).subscribe( _ => {
+      this.updateEvent.emit(todo.id);
+      // this.parent.updateTodos()
+    })
   }
 
 }

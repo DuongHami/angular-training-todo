@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Edit Menu</h1>
+<div mat-dialog-content>
+  <div>
+    <p>Taskname:</p>
+    <input type = "text" [(ngModel)]="taskname">
+  </div>
+  <div>
+    <p>Description:</p>
+    <input type = "text" [(ngModel)]="description">
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="create()">Create</button>
+  <button mat-button (click)="closePopup()">Close</button>
+</div>
