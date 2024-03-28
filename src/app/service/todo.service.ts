@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { todos } from "../mock/ToDoList";
+import { todos } from "../mockData/ToDoList";
 import { ToDo } from "../entity/ToDo";
 import {TodoapiService} from "./todoapi.service";
 import {Observable} from "rxjs";

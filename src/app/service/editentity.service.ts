@@ -1,9 +1,7 @@
-import {Inject, Injectable} from '@angular/core';
-import { BehaviorSubject} from "rxjs";
+import { Injectable } from '@angular/core';
 import { ToDo } from "../entity/ToDo";
 import { EdittodopopupComponent } from "../components/edittodopopup/edittodopopup.component";
-import {MatDialog} from "@angular/material/dialog";
-import {TodosComponent} from "../components/todos/todos.component";
+import { MatDialog } from "@angular/material/dialog";
 
 @Injectable({
   providedIn: 'root'

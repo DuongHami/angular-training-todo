@@ -4,24 +4,26 @@ import { EditentityService } from "../../service/editentity.service";
 import { TodoService } from "../../service/todo.service";
 import {TodosComponent} from "../todos/todos.component";
 
+/**
+ * Represent a single Todo Entity
+ * has two ways to update the list: EventEmitter or ParentComponent
+ */
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.css'
 })
 
-export class TodoComponent implements OnInit{
+export class TodoComponent {
 
   @Input() todo!: ToDo;
   @Output() updateEvent = new EventEmitter<number>();
 
-  constructor(private todoEditService : EditentityService, private todoService : TodoService, @Inject(TodosComponent) private parent : TodosComponent) {
-
-  }
-
-  ngOnInit() {
-
-  }
+  constructor(
+    private todoEditService : EditentityService,
+    private todoService : TodoService,
+    // @Inject(TodosComponent) private parent : TodosComponent
+  ) { }
 
   openPopUp(todo : ToDo){
     this.todoEditService.openPopup(todo);

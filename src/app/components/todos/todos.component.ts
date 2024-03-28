@@ -1,9 +1,11 @@
-import {Component, Injectable, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {ToDo} from "../../entity/ToDo";
+import { Component, OnInit } from '@angular/core';
+import { ToDo } from "../../entity/ToDo";
 import { TodoService } from "../../service/todo.service";
-import {EditentityService} from "../../service/editentity.service";
-import {CreateService} from "../../service/create.service";
+import { CreateService } from "../../service/create.service";
 
+/**
+ * Renders all Todos into a Kanban Board
+ */
 @Component({
   selector: 'app-todos',
   templateUrl: './todos.component.html',
@@ -18,7 +20,10 @@ export class TodosComponent implements OnInit {
   public todosDone : ToDo[] = [];
   public todosOpen : ToDo[] = [];
 
-  constructor(toDoService : TodoService, private createService : CreateService){
+  constructor(
+    toDoService : TodoService,
+    private createService : CreateService
+  ){
     this.toDoService = toDoService;
   }
 
@@ -44,6 +49,9 @@ export class TodosComponent implements OnInit {
     )
   }
 
+  /**
+   * creates a default task with name: New Task, description: New Description
+   */
   create(){
     this.toDoService.createToDo().subscribe(_ => {
         this.getAllOpenTodos()
@@ -51,6 +59,9 @@ export class TodosComponent implements OnInit {
     })
   }
 
+  /**
+   * opens a dialog where the user can enter the data for the new task
+   */
   createNew(){
     this.createService.openPopup();
   }

@@ -1,10 +1,12 @@
-import {Component, EventEmitter, Inject, Input, Output} from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { ToDo } from "../../entity/ToDo";
 import { EditentityService } from "../../service/editentity.service";
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import {TodoService} from "../../service/todo.service";
-import {TodosComponent} from "../todos/todos.component";
+import { TodoService } from "../../service/todo.service";
 
+/**
+ * Represents a PopUp Dialog where the user can edit a existing task
+ */
 @Component({
   selector: 'app-edittodopopup',
   templateUrl: './edittodopopup.component.html',
@@ -18,8 +20,9 @@ export class EdittodopopupComponent {
               private todoService : TodoService,
   ) {}
 
-  // @Output() editedEvent = new EventEmitter<string>();
-
+  /**
+   * Saving the edits to the task and closing the window
+   */
   closePopUp(){
     this.todoService.updateToDo(this.todo).subscribe(_ => {
       this.editService.closePopup();

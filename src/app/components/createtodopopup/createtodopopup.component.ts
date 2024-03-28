@@ -1,10 +1,12 @@
 import {Component, Inject} from '@angular/core';
 import { ToDo } from "../../entity/ToDo";
-import { EditentityService } from "../../service/editentity.service";
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import {TodoService} from "../../service/todo.service";
-import {CreateService} from "../../service/create.service";
+import { TodoService } from "../../service/todo.service";
+import { CreateService } from "../../service/create.service";
 
+/**
+ * Represents a PopUp Dialog where the user can create a task by entering a name and description
+ */
 @Component({
   selector: 'app-createtodopopup',
   templateUrl: './createtodopopup.component.html',
@@ -20,8 +22,10 @@ export class CreatetodopopupComponent {
   taskname : string = ""
   description : string = ""
 
-  create(){
-
+  /**
+   * Creating a task and closing the window, after that reloading the page
+   */
+  createTask(){
     this.todoService.createToDoNew(
       new ToDo(0, this.taskname, this.description, false)
     ).subscribe(_ => {
@@ -30,6 +34,9 @@ export class CreatetodopopupComponent {
     })
   }
 
+  /**
+   * Closing the window
+   */
   closePopup(){
     this.createService.closePopup();
   }
