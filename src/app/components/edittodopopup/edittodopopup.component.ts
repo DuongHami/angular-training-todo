@@ -9,14 +9,14 @@ import {TodoService} from "../../service/todo.service";
   templateUrl: './edittodopopup.component.html',
   styleUrl: './edittodopopup.component.css'
 })
+
 export class EdittodopopupComponent {
 
   constructor(@Inject(MAT_DIALOG_DATA) public todo: ToDo, private editService : EditentityService, private todoService : TodoService) {}
 
   closePopUp(){
     this.editService.closePopup();
-    this.todoService.updateToDo(this.todo)
+    this.todoService.updateToDo(this.todo).subscribe()
   }
-
 
 }

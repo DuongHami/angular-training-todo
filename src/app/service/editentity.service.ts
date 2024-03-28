@@ -12,9 +12,10 @@ export class EditentityService {
   constructor(private dialog : MatDialog) { }
 
   openPopup(todo : ToDo){
-    this.dialog.open(EdittodopopupComponent, {
-      data:todo
-    })
+    if(this.dialog.openDialogs.length==0)
+      this.dialog.open(EdittodopopupComponent, {
+        data:todo
+      })
   }
 
   closePopup(){

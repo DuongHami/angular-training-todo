@@ -16,6 +16,14 @@ import { ImprintComponent } from './components/imprint/imprint.component';
 import { DataprotectionComponent } from './components/dataprotection/dataprotection.component';
 import { EdittodopopupComponent } from './components/edittodopopup/edittodopopup.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+  CdkDrag,
+  CdkDropList,
+} from '@angular/cdk/drag-drop';
+import {HttpClientModule} from "@angular/common/http";
 
 
 
@@ -38,7 +46,10 @@ import {MatDialogModule} from "@angular/material/dialog";
     MatCardModule,
     MatButtonModule,
     MatSlideToggleModule,
-    MatDialogModule
+    MatDialogModule,
+    CdkDrag,
+    CdkDropList,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

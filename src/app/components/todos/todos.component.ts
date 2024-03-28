@@ -2,6 +2,8 @@ import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core'
 import {ToDo} from "../../entity/ToDo";
 // import {todos} from "../../mock/ToDoList";
 import { TodoService } from "../../service/todo.service";
+import {TodoapiService} from "../../service/todoapi.service";
+import {__createBinding} from "tslib";
 
 @Component({
   selector: 'app-todos',
@@ -12,27 +14,55 @@ import { TodoService } from "../../service/todo.service";
 export class TodosComponent implements OnInit {
 
   public  toDoService : TodoService;
+  public todoApiService : TodoapiService;
+  public todos : ToDo[] = [];
 
-  // todosDone : ToDo[] = [];
-  // todosOpen : ToDo[] = [];
-  // todos : ToDo[] = [];
+  public todosDone : ToDo[] = [];
+  public todosOpen : ToDo[] = [];
 
-  constructor(toDoService : TodoService) {
-    this.toDoService = toDoService
+  constructor(toDoService : TodoService, todoApiService : TodoapiService){
+    this.toDoService = toDoService;
+    this.todoApiService = todoApiService;
   }
 
   ngOnInit() {
     // this.sortTodos();
     // this.todos = this.toDoService.getAllToDos();
+    // this.toDoService.getAllToDos().subscribe(response =>
+    //   this.todos = response
+    // )
+    // this.getAllTodos()
+    this.getAllOpenTodos()
+    this.getAllFinishedTodos()
   }
-
-  createTodo(){
-    this.toDoService.createToDo(new ToDo(10, "New Taskname", "New Description", false));
-  }
-
-  // sortTodos(){
-  //   this.todosDone = this.toDoService.getAllToDos().filter(todo => todo.completed == true);
-  //   this.todosOpen = this.toDoService.getAllToDos().filter(todo => todo.completed == false);
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   this.getAllOpenTodos()
+  //   this.getAllFinishedTodos()
   // }
 
+
+  // getAllTodos() {
+  //   this.toDoService.getAllToDos().subscribe(response =>
+  //     this.todos = response
+  //   )
+  // }
+
+  getAllOpenTodos(){
+    this.toDoService.getAllOpenTodo().subscribe(response =>
+      this.todosOpen = response
+    )
+  }
+
+  getAllFinishedTodos(){
+    this.toDoService.getAllFinishedTodo().subscribe(response =>
+      this.todosDone = response
+    )
+  }
+
+  create(){
+    this.toDoService.createToDo().subscribe(_ => {
+        this.getAllOpenTodos()
+        this.getAllFinishedTodos()
+    })
+  }
 }

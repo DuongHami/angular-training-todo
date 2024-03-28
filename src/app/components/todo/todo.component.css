@@ -3,7 +3,7 @@ mat-card {
   color: #000000;
   margin: 16px;
   display: flex;
-  max-width: 400px;
+  width: 300px;
 }
 
 mat-card-content {
